@@ -1,6 +1,7 @@
 // Update with your config settings.
 
 module.exports = {
+  // Contiene datos de prueba para hacer todo tipo de experimentos
   development: {
     client: 'postgresql',
     connection: {
@@ -18,6 +19,7 @@ module.exports = {
     },
   },
 
+  // Contiene una copia exacta ( o tan exacta como se necesite, eg menos los datos sensible s)
   staging: {
     client: 'postgresql',
     connection: {
@@ -34,6 +36,7 @@ module.exports = {
     },
   },
 
+  // los datos reales de tu negocio: los datos en produccion
   production: {
     client: 'postgresql',
     connection: {
