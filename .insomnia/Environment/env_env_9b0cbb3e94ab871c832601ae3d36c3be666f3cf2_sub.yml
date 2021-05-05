@@ -1,0 +1,14 @@
+_id: env_env_9b0cbb3e94ab871c832601ae3d36c3be666f3cf2_sub
+type: Environment
+parentId: env_9b0cbb3e94ab871c832601ae3d36c3be666f3cf2
+modified: 1620100019267
+created: 1620100019267
+name: OpenAPI env
+data:
+  scheme: https
+  base_path: /reynerdev/DraegerService/1.0.0
+  host: virtserver.swaggerhub.com
+dataPropertyOrder: null
+color: null
+isPrivate: false
+metaSortKey: 1620100019267

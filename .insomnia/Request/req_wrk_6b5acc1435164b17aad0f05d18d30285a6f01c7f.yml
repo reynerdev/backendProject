@@ -1,0 +1,23 @@
+_id: req_wrk_6b5acc1435164b17aad0f05d18d30285a6f01c7f
+type: Request
+parentId: wrk_6b5acc1435164b17aad0f05d18d30285
+modified: 1620100018880
+created: 1620100018880
+url: "{{ base_url }}/user"
+name: /user
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: null
+parameters: []
+headers: []
+authentication: {}
+metaSortKey: -1620100018880
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

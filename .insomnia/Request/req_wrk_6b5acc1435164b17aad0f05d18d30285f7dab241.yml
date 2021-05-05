@@ -1,0 +1,27 @@
+_id: req_wrk_6b5acc1435164b17aad0f05d18d30285f7dab241
+type: Request
+parentId: fld_wrk_6b5acc1435164b17aad0f05d18d302859f8a2389
+modified: 1620100019183
+created: 1620100019183
+url: "{{ base_url }}/user"
+name: Return a List of FSEs
+description: ""
+method: GET
+body: {}
+parameters:
+  - name: bodyLimit
+    disabled: true
+    value: "15"
+  - name: pageLimit
+    disabled: true
+    value: "2"
+headers: []
+authentication: {}
+metaSortKey: -1620100019183
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global
