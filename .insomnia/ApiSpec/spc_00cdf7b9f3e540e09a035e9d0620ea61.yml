@@ -1,7 +1,7 @@
 _id: spc_00cdf7b9f3e540e09a035e9d0620ea61
 type: ApiSpec
 parentId: wrk_6b5acc1435164b17aad0f05d18d30285
-modified: 1620103521158
+modified: 1620273250572
 created: 1620006060625
 fileName: devfBackendProject
 contents: "openapi: 3.0.0
@@ -141,6 +141,8 @@ contents: "openapi: 3.0.0
 
   \        - User
 
+  \      summary: Creates a new User\ 
+
   \      description: Creates a new User in the database
 
   \      requestBody:
@@ -156,6 +158,53 @@ contents: "openapi: 3.0.0
   \              $ref:  '#/components/schemas/User'
 
   \             \ 
+
+  \      responses:
+
+  \        '200':
+
+  \          description: Successfully created User
+
+  \         \ 
+
+  \    put :
+
+  \      tags:\ 
+
+  \        - User
+
+  \      summary: Update existing User
+
+  \      description: Update existing User
+
+  \      requestBody:
+
+  \        required: true
+
+  \        content:
+
+  \          application/json:
+
+  \            schema:
+
+  \              $ref:  '#/components/schemas/User'
+
+  \             \ 
+
+  \      responses:
+
+  \        '200':
+
+  \          description: Successfully created User
+
+  \         \ 
+
+  \         \ 
+
+
+  \             \ 
+
+  \    \ 
 
   \             \ 
 
@@ -201,16 +250,309 @@ contents: "openapi: 3.0.0
 
   \                $ref: '#/components/schemas/User'
 
-  \     \ 
 
-  \     \ 
+  \    delete:
+
+  \      tags:
+
+  \        - User
+
+  \      summary: Deletes a pet
+
+  \      description: Deletes a pet
+
+  \      parameters:
+
+  \        - name: api_key
+
+  \          in: header
+
+  \          required: false
+
+  \          schema:
+
+  \            type: string
+
+  \        - name: petId
+
+  \          in: path
+
+  \          description: Pet id to delete
+
+  \          required: true
+
+  \          schema:
+
+  \            type: integer
+
+  \            format: int64
+
+  \      responses:
+
+  \        '400':
+
+  \          description: Invalid ID supplied
+
+  \        '404':
+
+  \          description: Pet not found
+
+  \      security:
+
+  \        - petstore_auth:
+
+  \            - 'write:pets'
+
+  \            - 'read:pets'
+
+  \           \ 
 
 
-  \                    \ 
 
-  \                       \ 
 
-  \                       \ 
+  \  /user/{userid}/skill:
+
+  \    get:
+
+  \      tags:\ 
+
+  \        - User
+
+  \      summary: Return the information about all User's Skills
+
+  \      description: Return the information about all User's Skills
+
+  \      parameters:
+
+  \        - in: path
+
+  \          name: userid
+
+  \          required: true
+
+  \          schema:
+
+  \            type: integer
+
+  \            example: 3
+
+  \      responses:
+
+  \        '200':
+
+  \          description: Succesfull pull from the User
+
+  \          content:\ 
+
+  \            application/json:
+
+  \              schema:
+
+  \                $ref: '#/components/schemas/Skill'
+
+
+  \    post:
+
+  \      tags:
+
+  \        - User
+
+  \      summary: Add an skill to the User\ 
+
+  \      description: Add an skill to the User\ 
+
+  \      requestBody:
+
+  \        required: true
+
+  \        content:
+
+  \          application/json:
+
+  \            schema:
+
+  \              $ref:  '#/components/schemas/Skill'
+
+  \      responses:
+
+  \        '400':
+
+  \          description: Invalid ID supplied
+
+  \        '404':
+
+  \          description: User not found
+
+
+  \               \ 
+
+  \               \ 
+
+  \  /user/{userid}/skill/{skillid}:
+
+  \    get:
+
+  \      tags:\ 
+
+  \        - User
+
+  \      summary: Return the information about all User's Skills
+
+  \      description: Return the information about all User's Skills
+
+  \      parameters:
+
+  \        - in: path
+
+  \          name: userid
+
+  \          required: true
+
+  \          schema:
+
+  \            type: integer
+
+  \            example: 3
+
+  \        - in: path
+
+  \          name: skillid
+
+  \          required: true
+
+  \          schema:
+
+  \            type: integer
+
+  \            example: 10
+
+  \      responses:
+
+  \        '200':
+
+  \          description: Succesfull pull from the User
+
+  \          content:\ 
+
+  \            application/json:
+
+  \              schema:
+
+  \                $ref: '#/components/schemas/Skill'
+
+
+  \    delete:
+
+  \      tags:
+
+  \        - User
+
+  \      summary: Deletes a specific skill from the User\ 
+
+  \      description: Deletes a specific skill from the User\ 
+
+  \      parameters:
+
+  \        - name: userid
+
+  \          in: path
+
+  \          description: Pet id to delete
+
+  \          required: true
+
+  \          schema:
+
+  \            type: integer
+
+  \            format: int64
+
+  \      responses:
+
+  \        '400':
+
+  \          description: Invalid ID supplied
+
+  \        '404':
+
+  \          description: User not found
+
+
+
+
+  \  /skill:
+
+  \    get:
+
+  \     tags:
+
+  \        - Skill
+
+  \     summary: Return all the Skills in our system
+
+  \     description: Return all the Skills in our system
+
+  \     responses:
+
+  \       '200':
+
+  \         description: Succesfull return of all the Skills our system
+
+  \         content:
+
+  \           application/json:
+
+  \             schema:
+
+  \               type: array
+
+  \               items:\ 
+
+  \                 $ref: '#/components/schemas/SkillTypes'
+
+  \                \ 
+
+  \                \ 
+
+  \    post:
+
+  \      tags:
+
+  \        - Skill
+
+  \      summary: Add a Skill description
+
+  \      description: Add a Skill description\ 
+
+  \      requestBody:\ 
+
+  \        required: true
+
+  \        content:
+
+  \          application/json:
+
+  \            schema:
+
+  \              $ref:  '#/components/schemas/SkillTypes'
+
+  \      responses:
+
+  \        '400':
+
+  \          description: Invalid ID supplied
+
+  \        '404':
+
+  \          description: User not found    \ 
+
+  \                \ 
+
+  \    \ 
+
+
+
+  \\ 
 
   components:
 
@@ -304,17 +646,17 @@ contents: "openapi: 3.0.0
 
   \      properties:
 
-  \        id:
-
-  \          type: integer
-
-  \          example: 12
-
-  \        idurl:
+  \        skillurl:
 
   \          type: string
 
   \          example: '/skill/212'
+
+  \        userurl:
+
+  \          type: string
+
+  \          example: '/user/212'
 
   \        price:
 
@@ -339,6 +681,160 @@ contents: "openapi: 3.0.0
   \          type: boolean
 
   \          example: true
+
+  \         \ 
+
+  \         \ 
+
+  \    SkillTypes:
+
+  \      type: object
+
+  \      properties:
+
+  \        id:
+
+  \          type: integer
+
+  \          example: 12
+
+  \        idurl:
+
+  \          type: string
+
+  \          example: '/skill/212'
+
+  \        skillName:
+
+  \          type: string
+
+  \          example: 'Web Design'
+
+  \        quantityusers:
+
+  \          type: integer
+
+  \          example: 24
+
+  \         \ 
+
+  \    Client:
+
+  \      type: object
+
+  \      properties:
+
+  \        id:
+
+  \          type: integer
+
+  \          example: 12
+
+  \        clientname:
+
+  \          type: string
+
+  \          example: 'Franz Walter'
+
+  \        clientemail:
+
+  \          type: string
+
+  \          example: client@gmail.com
+
+  \        clientpassword:
+
+  \          type: string
+
+  \          example: '231#@$DSAdfgasd'
+
+  \        lastname:
+
+  \          type: string
+
+  \          example: 'Loza Silva'
+
+  \        rating:
+
+  \          type: integer
+
+  \          example: 4.3
+
+  \        quantityusers:
+
+  \          type: integer
+
+  \          example: 24
+
+  \        createdat:
+
+  \          type: string
+
+  \          example: 05/05/2021
+
+  \         \ 
+
+  \    Request:
+
+  \      type: object
+
+  \      properties:
+
+  \        id:
+
+  \          type: integer
+
+  \          example: 12
+
+  \        clientname:
+
+  \          type: string
+
+  \        userid:
+
+  \          type: string
+
+  \          example: /user/21
+
+  \        clientid:
+
+  \          type: string
+
+  \          example: /client/123
+
+  \        location:
+
+  \          type: string
+
+  \          example: '1231232.122313123'
+
+  \        status:
+
+  \          type: string
+
+  \          example: '/description/12'
+
+  \        arrangedate:
+
+  \          type: string
+
+  \          example: '12/12/2010'
+
+  \        downpayment:
+
+  \          type: integer
+
+  \          example: 123
+
+  \        total:
+
+  \          type: integer
+
+  \          example: 1234
+
+  \         \ 
+
+  \     \ 
 
   \   \ 
 
