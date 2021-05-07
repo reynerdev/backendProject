@@ -1,7 +1,7 @@
 _id: spc_00cdf7b9f3e540e09a035e9d0620ea61
 type: ApiSpec
 parentId: wrk_6b5acc1435164b17aad0f05d18d30285
-modified: 1620273250572
+modified: 1620363955877
 created: 1620006060625
 fileName: devfBackendProject
 contents: "openapi: 3.0.0
@@ -197,14 +197,78 @@ contents: "openapi: 3.0.0
 
   \          description: Successfully created User
 
-  \         \ 
+  \  /user/login:
 
-  \         \ 
+  \     post:
 
+  \      \ 
 
-  \             \ 
+  \       tags:
 
-  \    \ 
+  \         - User
+
+  \       summary: Log in User
+
+  \       description: Log in User
+
+  \       requestBody:
+
+  \         required: true
+
+  \         content:
+
+  \           application/json:
+
+  \             schema:
+
+  \               type: object
+
+  \               properties:
+
+  \                 email:
+
+  \                   type: string
+
+  \                   example: 'email'
+
+  \                 password:
+
+  \                   type: string
+
+  \                   example: 'password'
+
+  \          \ 
+
+  \       responses:
+
+  \         '200':
+
+  \           description: Succesfull login
+
+  \         '400':
+
+  \           description: Invalid username/password supplied
+
+  \            \ 
+
+  \  /user/logout:
+
+  \    post:
+
+  \      tags:
+
+  \        - User
+
+  \      summary: Logs out current User
+
+  \      description: Logs out current User
+
+  \      responses:
+
+  \        '200':
+
+  \          description: Logs out current logged in user session
+
 
   \             \ 
 
@@ -520,9 +584,9 @@ contents: "openapi: 3.0.0
 
   \        - Skill
 
-  \      summary: Add a Skill description
+  \      summary: Add a Skill type
 
-  \      description: Add a Skill description\ 
+  \      description: Add a Skill type\ 
 
   \      requestBody:\ 
 
@@ -550,9 +614,313 @@ contents: "openapi: 3.0.0
 
   \    \ 
 
+  \    \ 
 
+
+  \  /client/login:
+
+  \     post:
+
+  \      \ 
+
+  \       tags:
+
+  \         - Clients
+
+  \       summary: Log in User
+
+  \       description: Log in User
+
+  \       requestBody:
+
+  \         required: true
+
+  \         content:
+
+  \           application/json:
+
+  \             schema:
+
+  \               type: object
+
+  \               properties:
+
+  \                 email:
+
+  \                   type: string
+
+  \                   example: 'email'
+
+  \                 password:
+
+  \                   type: string
+
+  \                   example: 'password'
+
+  \          \ 
+
+  \       responses:
+
+  \         '200':
+
+  \           description: Succesfull login
+
+  \         '400':
+
+  \           description: Invalid username/password supplied
+
+  \            \ 
+
+  \  /client/logout:
+
+  \    post:
+
+  \      tags:
+
+  \        - Clients
+
+  \      summary: Logs out current User
+
+  \      description: Logs out current User
+
+  \      responses:
+
+  \        '200':
+
+  \          description: Logs out current logged in user session
 
   \\ 
+
+  \  /request/{requestid}:
+
+  \    get:
+
+  \      tags:\ 
+
+  \        - Request
+
+  \      summary: Return a request by its ID
+
+  \      description:  Return a request by its ID
+
+  \      parameters:
+
+  \        - name: User Id
+
+  \        - in: path
+
+  \          name: requestid
+
+  \          required: true
+
+  \          schema:
+
+  \            type: integer
+
+  \            example: 3
+
+  \      responses:
+
+  \        '200':
+
+  \          description: Succesfull pull from the User\ 
+
+  \          content:\ 
+
+  \            application/json:
+
+  \              schema:
+
+  \                $ref: '#/components/schemas/Request'
+
+
+  \    delete:
+
+  \      tags:
+
+  \        - Request
+
+  \      summary: Deletes a request by its ID
+
+  \      description: Deletes a request by its ID
+
+  \      parameters:
+
+  \        - name: api_key
+
+  \          in: header
+
+  \          required: false
+
+  \          schema:
+
+  \            type: string
+
+  \        - name: petId
+
+  \          in: path
+
+  \          description: Pet id to delete
+
+  \          required: true
+
+  \          schema:
+
+  \            type: integer
+
+  \            format: int64
+
+  \      responses:
+
+  \        '400':
+
+  \          description: Invalid ID supplied
+
+  \        '404':
+
+  \          description: Pet not found
+
+  \      security:
+
+  \        - petstore_auth:
+
+  \            - 'write:pets'
+
+  \            - 'read:pets'
+
+  \           \ 
+
+  \  /client :
+
+  \    get :
+
+  \        tags:
+
+  \          - Clients
+
+  \        summary: Return a List of Clients
+
+  \        operationId: searchFSE
+
+  \        description:  Obtain information about all clients from the
+  application database
+
+  \        parameters:
+
+  \          - name: bodyLimit
+
+  \            in: query
+
+  \            description:  The amount of Users returned
+
+  \            schema:
+
+  \              type: integer
+
+  \              minimun: 10
+
+  \              maximun: 20
+
+  \              example: 15
+
+  \             \ 
+
+  \          - name: pageLimit
+
+  \            in: query
+
+  \            description:  The pages to return Users info
+
+  \            schema:
+
+  \              type: integer
+
+  \              minimun: 1
+
+  \              maximun: 5
+
+  \              example: 2
+
+  \        responses:
+
+  \          '200' :
+
+  \            description: Successful pull of all Clients info
+
+  \            content:
+
+  \              application/json:
+
+  \                schema:
+
+  \                  type: array
+
+  \                  items:
+
+  \                    $ref:  '#/components/schemas/Client'                                 \
+  \ 
+
+  \    post :
+
+  \      tags:\ 
+
+  \        - Clients
+
+  \      summary: Creates a new User\ 
+
+  \      description: Creates a new User in the database
+
+  \      requestBody:
+
+  \        required: true
+
+  \        content:
+
+  \          application/json:
+
+  \            schema:
+
+  \              $ref:  '#/components/schemas/Client'
+
+  \             \ 
+
+  \      responses:
+
+  \        '200':
+
+  \          description: Successfully created User
+
+  \         \ 
+
+  \    put :
+
+  \      tags:\ 
+
+  \        - Clients
+
+  \      summary: Update existing User
+
+  \      description: Update existing User
+
+  \      requestBody:
+
+  \        required: true
+
+  \        content:
+
+  \          application/json:
+
+  \            schema:
+
+  \              $ref:  '#/components/schemas/Client'
+
+  \             \ 
+
+  \      responses:
+
+  \        '200':
+
+  \          description: Successfully created User\ 
 
   components:
 
@@ -786,21 +1154,17 @@ contents: "openapi: 3.0.0
 
   \          example: 12
 
-  \        clientname:
-
-  \          type: string
-
   \        userid:
 
   \          type: string
 
-  \          example: /user/21
+  \          example: '/user/21'
 
   \        clientid:
 
   \          type: string
 
-  \          example: /client/123
+  \          example: '/client/123'
 
   \        location:
 
