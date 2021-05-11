@@ -1,0 +1,30 @@
+_id: req_e8ef9b86d7fe4a75ad77e1d261f29adc
+type: Request
+parentId: wrk_6b5acc1435164b17aad0f05d18d30285
+modified: 1620006690684
+created: 1620006102752
+url: localhost:3000/api/v1/rental
+name: GET
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"Hola": "Reyner"
+    	
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_23e98566e6dd426e874606f1df263ae3
+authentication: {}
+metaSortKey: -1620006102752
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

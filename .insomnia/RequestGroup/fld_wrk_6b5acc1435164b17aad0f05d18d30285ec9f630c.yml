@@ -1,0 +1,10 @@
+_id: fld_wrk_6b5acc1435164b17aad0f05d18d30285ec9f630c
+type: RequestGroup
+parentId: wrk_6b5acc1435164b17aad0f05d18d30285
+modified: 1620100019254
+created: 1620100019254
+name: Skill
+description: All the Skills available
+environment: {}
+environmentPropertyOrder: null
+metaSortKey: -1620100019254

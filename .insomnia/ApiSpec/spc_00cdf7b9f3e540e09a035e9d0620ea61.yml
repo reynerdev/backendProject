@@ -1,0 +1,1572 @@
+_id: spc_00cdf7b9f3e540e09a035e9d0620ea61
+type: ApiSpec
+parentId: wrk_6b5acc1435164b17aad0f05d18d30285
+modified: 1620712098771
+created: 1620006060625
+fileName: devfBackendProject
+contents: "openapi: 3.0.0
+
+  servers:
+
+  \  - description: SwaggerHub API Auto Mocking
+
+  \    url: https://virtserver.swaggerhub.com/reynerdev/DraegerService/1.0.0
+
+  info:
+
+  \  description: This is a simple API
+
+  \  version: \"1.0.0\"
+
+  \  title: Tinder Devf
+
+
+  tags:
+
+  \  - name: User
+
+  \    description: Users that uses our Tinder Application
+
+  \   \ 
+
+  \  - name: Skill
+
+  \    description: All the Skills available
+
+  \   \ 
+
+  \  - name: Clients
+
+  \    description: Our ClientS\ 
+
+  \   \ 
+
+  \  - name: Request
+
+  \    description: Request List betwenn User and Clients
+
+  \   \ 
+
+  \  - name: Review User
+
+  \    description: Review from the Clients\ 
+
+  \ \ 
+
+  \  - name: Review Client
+
+  \    description: Review from the User
+
+  \   \ 
+
+  \   \ 
+
+  \   \ 
+
+  paths:
+
+  \  /user :
+
+  \    get :
+
+  \        tags:
+
+  \          - User
+
+  \        summary: Return a List of Users
+
+  \        operationId: searchFSE
+
+  \        description:  Obtain information about all users from the
+  application database
+
+  \        parameters:
+
+  \          - name: bodyLimit
+
+  \            in: query
+
+  \            description:  The amount of Users returned
+
+  \            schema:
+
+  \              type: integer
+
+  \              minimun: 10
+
+  \              maximun: 20
+
+  \              example: 15
+
+  \             \ 
+
+  \          - name: pageLimit
+
+  \            in: query
+
+  \            description:  The pages to return Users info
+
+  \            schema:
+
+  \              type: integer
+
+  \              minimun: 1
+
+  \              maximun: 5
+
+  \              example: 2
+
+  \        responses:
+
+  \          '200' :
+
+  \            description: Successful pull of Users info
+
+  \            content:
+
+  \              application/json:
+
+  \                schema:
+
+  \                  type: array
+
+  \                  items:
+
+  \                    $ref:  '#/components/schemas/User'                                 \
+  \ 
+
+  \    post :
+
+  \      tags:\ 
+
+  \        - User
+
+  \      summary: Creates a new User\ 
+
+  \      description: Creates a new User in the database
+
+  \      requestBody:
+
+  \        required: true
+
+  \        content:
+
+  \          application/json:
+
+  \            schema:
+
+  \              $ref:  '#/components/schemas/User'
+
+  \             \ 
+
+  \      responses:
+
+  \        '200':
+
+  \          description: Successfully created User
+
+  \         \ 
+
+  \    put :
+
+  \      tags:\ 
+
+  \        - User
+
+  \      summary: Update existing User
+
+  \      description: Update existing User
+
+  \      requestBody:
+
+  \        required: true
+
+  \        content:
+
+  \          application/json:
+
+  \            schema:
+
+  \              $ref:  '#/components/schemas/User'
+
+  \             \ 
+
+  \      responses:
+
+  \        '200':
+
+  \          description: Successfully created User
+
+  \  /user/login:
+
+  \     post:
+
+  \      \ 
+
+  \       tags:
+
+  \         - User
+
+  \       summary: Log in User
+
+  \       description: Log in User
+
+  \       requestBody:
+
+  \         required: true
+
+  \         content:
+
+  \           application/json:
+
+  \             schema:
+
+  \               type: object
+
+  \               properties:
+
+  \                 email:
+
+  \                   type: string
+
+  \                   example: 'email'
+
+  \                 password:
+
+  \                   type: string
+
+  \                   example: 'password'
+
+  \          \ 
+
+  \       responses:
+
+  \         '200':
+
+  \           description: Succesfull login
+
+  \         '400':
+
+  \           description: Invalid username/password supplied
+
+  \            \ 
+
+  \  /user/logout:
+
+  \    post:
+
+  \      tags:
+
+  \        - User
+
+  \      summary: Logs out current User
+
+  \      description: Logs out current User
+
+  \      responses:
+
+  \        '200':
+
+  \          description: Logs out current logged in user session
+
+
+  \             \ 
+
+  \  /user/{userid}:
+
+  \    get:
+
+  \      tags:\ 
+
+  \        - User
+
+  \      summary: Return the information about a User
+
+  \      description: Obtain information about a User
+
+  \      parameters:
+
+  \        - name: User Id
+
+  \        - in: path
+
+  \          name: userid
+
+  \          required: true
+
+  \          schema:
+
+  \            type: integer
+
+  \            example: 3
+
+  \      responses:
+
+  \        '200':
+
+  \          description: Succesfull pull from the User\ 
+
+  \          content:\ 
+
+  \            application/json:
+
+  \              schema:
+
+  \                $ref: '#/components/schemas/User'
+
+
+  \    delete:
+
+  \      tags:
+
+  \        - User
+
+  \      summary: Deletes a User
+
+  \      description: Deletes a User
+
+  \      parameters:
+
+  \        - name: api_key
+
+  \          in: header
+
+  \          required: false
+
+  \          schema:
+
+  \            type: string
+
+  \        - name: petId
+
+  \          in: path
+
+  \          description: Pet id to delete
+
+  \          required: true
+
+  \          schema:
+
+  \            type: integer
+
+  \            format: int64
+
+  \      responses:
+
+  \        '400':
+
+  \          description: Invalid ID supplied
+
+  \        '404':
+
+  \          description: Pet not found
+
+  \      security:
+
+  \        - petstore_auth:
+
+  \            - 'write:pets'
+
+  \            - 'read:pets'
+
+  \           \ 
+
+
+
+
+  \  /user/{userid}/skill:
+
+  \    get:
+
+  \      tags:\ 
+
+  \        - User
+
+  \      summary: Return the information about all User's Skills
+
+  \      description: Return the information about all User's Skills
+
+  \      parameters:
+
+  \        - in: path
+
+  \          name: userid
+
+  \          required: true
+
+  \          schema:
+
+  \            type: integer
+
+  \            example: 3
+
+  \      responses:
+
+  \        '200':
+
+  \          description: Succesfull pull from the User
+
+  \          content:\ 
+
+  \            application/json:
+
+  \              schema:
+
+  \                $ref: '#/components/schemas/Skill'
+
+
+  \    post:
+
+  \      tags:
+
+  \        - User
+
+  \      summary: Add an skill to the User\ 
+
+  \      description: Add an skill to the User\ 
+
+  \      requestBody:
+
+  \        required: true
+
+  \        content:
+
+  \          application/json:
+
+  \            schema:
+
+  \              $ref:  '#/components/schemas/Skill'
+
+  \      responses:
+
+  \        '400':
+
+  \          description: Invalid ID supplied
+
+  \        '404':
+
+  \          description: User not found
+
+
+  \    put:
+
+  \      tags:
+
+  \        - User
+
+  \      summary: Update an skill to the User\ 
+
+  \      description: Update an skill to the User\ 
+
+  \      requestBody:
+
+  \        required: true
+
+  \        content:
+
+  \          application/json:
+
+  \            schema:
+
+  \              $ref:  '#/components/schemas/Skill'
+
+  \      responses:
+
+  \        '400':
+
+  \          description: Invalid ID supplied
+
+  \        '404':
+
+  \          description: User not found               \ 
+
+  \               \ 
+
+  \  /user/{userid}/skill/{skillid}:
+
+  \    get:
+
+  \      tags:\ 
+
+  \        - User
+
+  \      summary: Return the information about all User's Skills
+
+  \      description: Return the information about all User's Skills
+
+  \      parameters:
+
+  \        - in: path
+
+  \          name: userid
+
+  \          required: true
+
+  \          schema:
+
+  \            type: integer
+
+  \            example: 3
+
+  \        - in: path
+
+  \          name: skillid
+
+  \          required: true
+
+  \          schema:
+
+  \            type: integer
+
+  \            example: 10
+
+  \      responses:
+
+  \        '200':
+
+  \          description: Succesfull pull from the User
+
+  \          content:\ 
+
+  \            application/json:
+
+  \              schema:
+
+  \                $ref: '#/components/schemas/Skill'
+
+
+  \    delete:
+
+  \      tags:
+
+  \        - User
+
+  \      summary: Deletes a specific skill from the User\ 
+
+  \      description: Deletes a specific skill from the User\ 
+
+  \      parameters:
+
+  \        - name: userid
+
+  \          in: path
+
+  \          description: Pet id to delete
+
+  \          required: true
+
+  \          schema:
+
+  \            type: integer
+
+  \            format: int64
+
+  \      responses:
+
+  \        '400':
+
+  \          description: Invalid ID supplied
+
+  \        '404':
+
+  \          description: User not found
+
+
+
+
+  \  /skill:
+
+  \    get:
+
+  \     tags:
+
+  \        - Skill
+
+  \     summary: Return all the Skills in our system
+
+  \     description: Return all the Skills in our system
+
+  \     responses:
+
+  \       '200':
+
+  \         description: Succesfull return of all the Skills our system
+
+  \         content:
+
+  \           application/json:
+
+  \             schema:
+
+  \               type: array
+
+  \               items:\ 
+
+  \                 $ref: '#/components/schemas/SkillTypes'
+
+  \                \ 
+
+  \                \ 
+
+  \    post:
+
+  \      tags:
+
+  \        - Skill
+
+  \      summary: Add a Skill type
+
+  \      description: Add a Skill type\ 
+
+  \      requestBody:\ 
+
+  \        required: true
+
+  \        content:
+
+  \          application/json:
+
+  \            schema:
+
+  \              $ref:  '#/components/schemas/SkillTypes'
+
+  \      responses:
+
+  \        '400':
+
+  \          description: Invalid ID supplied
+
+  \        '404':
+
+  \          description: User not found    \ 
+
+  \         \ 
+
+  \         \ 
+
+  \    put:
+
+  \      tags:
+
+  \        - Skill
+
+  \      summary:  Update an existing Skill
+
+  \      description: Add a Skill type\ 
+
+  \      requestBody:\ 
+
+  \        required: true
+
+  \        content:
+
+  \          application/json:
+
+  \            schema:
+
+  \              $ref:  '#/components/schemas/SkillTypes'
+
+  \      responses:
+
+  \        '400':
+
+  \          description: Invalid ID supplied
+
+  \        '404':
+
+  \          description: User not found        \ 
+
+  \                \ 
+
+  \    \ 
+
+  \    \ 
+
+
+  \  /client/login:
+
+  \     post:
+
+  \      \ 
+
+  \       tags:
+
+  \         - Clients
+
+  \       summary: Log in User
+
+  \       description: Log in User
+
+  \       requestBody:
+
+  \         required: true
+
+  \         content:
+
+  \           application/json:
+
+  \             schema:
+
+  \               type: object
+
+  \               properties:
+
+  \                 email:
+
+  \                   type: string
+
+  \                   example: 'email'
+
+  \                 password:
+
+  \                   type: string
+
+  \                   example: 'password'
+
+  \          \ 
+
+  \       responses:
+
+  \         '200':
+
+  \           description: Succesfull login
+
+  \         '400':
+
+  \           description: Invalid username/password supplied
+
+  \            \ 
+
+  \  /client/logout:
+
+  \    post:
+
+  \      tags:
+
+  \        - Clients
+
+  \      summary: Logs out current User
+
+  \      description: Logs out current User
+
+  \      responses:
+
+  \        '200':
+
+  \          description: Logs out current logged in user session
+
+  \         \ 
+
+  \         \ 
+
+  \  /request:
+
+  \    get:
+
+  \      tags:
+
+  \        - Request
+
+  \      description: Get all the requests
+
+  \      summary: Get all the requests
+
+  \     \ 
+
+  \      responses:
+
+  \        '200':
+
+  \          description: Return an array of all the requests
+
+  \          content:
+
+  \            application/json:
+
+  \              schema:
+
+  \                type: array
+
+  \                items:
+
+  \                  $ref: '#/components/schemas/Request'
+
+  \                 \ 
+
+  \    put:
+
+  \      tags:
+
+  \        - Request
+
+  \      summary:  Update an existing request
+
+  \      description: Update an existing request
+
+  \      requestBody:\ 
+
+  \        required: true
+
+  \        content:
+
+  \          application/json:
+
+  \            schema:
+
+  \              $ref:  '#/components/schemas/Request'
+
+  \      responses:
+
+  \        '400':
+
+  \          description: Invalid ID supplied
+
+  \        '404':
+
+  \          description: User not found       \ 
+
+  \                 \ 
+
+  \                 \ 
+
+  \             \ 
+
+  \\ 
+
+  \  /request/{requestid}:
+
+  \    get:
+
+  \      tags:\ 
+
+  \        - Request
+
+  \      summary: Return a request by its ID
+
+  \      description:  Return a request by its ID
+
+  \      parameters:
+
+  \        - name: requestid
+
+  \          in: path
+
+  \          required: true
+
+  \          schema:
+
+  \            type: integer
+
+  \            example: 3
+
+  \          description: Request Id from the client
+
+  \      responses:
+
+  \        '200':
+
+  \          description: Succesfull pull from the User\ 
+
+  \          content:\ 
+
+  \            application/json:
+
+  \              schema:
+
+  \                $ref: '#/components/schemas/Request'
+
+  \               \ 
+
+
+
+  \    delete:
+
+  \      tags:
+
+  \        - Request
+
+  \      summary: Deletes a request by its ID
+
+  \      description: Deletes a request by its ID
+
+  \      parameters:
+
+  \        - name: api_key
+
+  \          in: header
+
+  \          required: false
+
+  \          schema:
+
+  \            type: string
+
+  \        - name: petId
+
+  \          in: path
+
+  \          description: Pet id to delete
+
+  \          required: true
+
+  \          schema:
+
+  \            type: integer
+
+  \            format: int64
+
+  \      responses:
+
+  \        '400':
+
+  \          description: Invalid ID supplied
+
+  \        '404':
+
+  \          description: Pet not found
+
+
+
+  \  /request/{requestid}/finish:
+
+  \    post:
+
+  \      tags:\ 
+
+  \        - Request
+
+  \      summary: Set status request to complete
+
+  \      description:  Set status request to complete
+
+  \      parameters:
+
+  \        - name: requestid
+
+  \          in: path
+
+  \          required: true
+
+  \          schema:
+
+  \            type: integer
+
+  \            example: 3
+
+  \          description: Request Id from the client
+
+  \      responses:
+
+  \        '200':
+
+  \          description: Succesfull finished request\ 
+
+
+
+  \  /request/{userid}/{clientid}:
+
+  \    get:
+
+  \      tags:
+
+  \        - Request
+
+  \      summary: Return all the request between a Client Id and a User Id
+
+  \      parameters:
+
+  \        - name: userid
+
+  \          in: path
+
+  \          required: true
+
+  \          schema:
+
+  \            type: integer
+
+  \            example: 2
+
+  \          description: User id
+
+  \        - name: clientid
+
+  \          in: path
+
+  \          required: true
+
+  \          schema:
+
+  \            type: integer
+
+  \            example: 3
+
+  \          description: Client id
+
+  \        - name:  status
+
+  \          in: query
+
+  \          schema:
+
+  \            type: string
+
+  \          description: Filter the result by status
+
+  \      responses:
+
+  \        '200':
+
+  \          description: Sucessfull pull from the Request
+
+  \          content:\ 
+
+  \            application/json:
+
+  \              schema:
+
+  \                type: array
+
+  \                items:
+
+  \                   $ref: '#/components/schemas/Request'
+
+  \                  \ 
+
+  \                  \ 
+
+  \  /request/{userid}:
+
+  \    get:
+
+  \      tags:
+
+  \        - Request
+
+  \      summary: Return all the request from the Users's
+
+  \      parameters:
+
+  \        - name: userid
+
+  \          in: path
+
+  \          required: true
+
+  \          schema:
+
+  \            type: integer
+
+  \            example: 2
+
+  \          description: User id
+
+  \        - name:  status
+
+  \          in: query
+
+  \          schema:
+
+  \            type: string
+
+  \            example: completed
+
+  \          description: Filter the result by status
+
+  \      responses:
+
+  \        '200':
+
+  \          description: Sucessfull pull from the Request
+
+  \          content:\ 
+
+  \            application/json:
+
+  \              schema:
+
+  \                type: array
+
+  \                items:
+
+  \                   $ref: '#/components/schemas/Request'
+
+
+  \  /request/{clientid}:
+
+  \    get:
+
+  \      tags:
+
+  \        - Request
+
+  \      summary: Return all the request from the Clients
+
+  \      parameters:
+
+  \        - name: clientid
+
+  \          in: path
+
+  \          required: true
+
+  \          schema:
+
+  \            type: integer
+
+  \            example: 2
+
+  \          description: Client ID
+
+  \        - name:  status
+
+  \          in: query
+
+  \          schema:
+
+  \            type: string
+
+  \          description: Filter the result by status
+
+  \      responses:
+
+  \        '200':
+
+  \          description: Sucessfull pull from the Request
+
+  \          content:\ 
+
+  \            application/json:
+
+  \              schema:
+
+  \                type: array
+
+  \                items:
+
+  \                   $ref: '#/components/schemas/Request'
+
+  \  /client :
+
+  \    get :
+
+  \        tags:
+
+  \          - Clients
+
+  \        summary: Return a List of Clients
+
+  \        operationId: searchFSE
+
+  \        description:  Obtain information about all clients from the
+  application database
+
+  \        parameters:
+
+  \          - name: bodyLimit
+
+  \            in: query
+
+  \            description:  The amount of Users returned
+
+  \            schema:
+
+  \              type: integer
+
+  \              minimun: 10
+
+  \              maximun: 20
+
+  \              example: 15
+
+  \             \ 
+
+  \          - name: pageLimit
+
+  \            in: query
+
+  \            description:  The pages to return Users info
+
+  \            schema:
+
+  \              type: integer
+
+  \              minimun: 1
+
+  \              maximun: 5
+
+  \              example: 2
+
+  \        responses:
+
+  \          '200' :
+
+  \            description: Successful pull of all Clients info
+
+  \            content:
+
+  \              application/json:
+
+  \                schema:
+
+  \                  type: array
+
+  \                  items:
+
+  \                    $ref:  '#/components/schemas/Client'                                 \
+  \ 
+
+  \    post :
+
+  \      tags:\ 
+
+  \        - Clients
+
+  \      summary: Creates a new User\ 
+
+  \      description: Creates a new User in the database
+
+  \      requestBody:
+
+  \        required: true
+
+  \        content:
+
+  \          application/json:
+
+  \            schema:
+
+  \              $ref:  '#/components/schemas/Client'
+
+  \             \ 
+
+  \      responses:
+
+  \        '200':
+
+  \          description: Successfully created User
+
+  \         \ 
+
+  \    put :
+
+  \      tags:\ 
+
+  \        - Clients
+
+  \      summary: Update existing User
+
+  \      description: Update existing User
+
+  \      requestBody:
+
+  \        required: true
+
+  \        content:
+
+  \          application/json:
+
+  \            schema:
+
+  \              $ref:  '#/components/schemas/Client'
+
+  \             \ 
+
+  \      responses:
+
+  \        '200':
+
+  \          description: Successfully created User\ 
+
+  components:
+
+  \  schemas:
+
+  \    User:
+
+  \      type: object
+
+  \      properties:
+
+  \        id:
+
+  \          type: integer
+
+  \          example: 4
+
+  \        idurl:
+
+  \          type: string
+
+  \          example: /user/4
+
+  \        username:
+
+  \          type: string
+
+  \          example: Reyner Loza
+
+  \        lastname:
+
+  \          type: string
+
+  \          example: Loza Silva
+
+  \        birthday:
+
+  \          type: string
+
+  \          example: 10/02/1995
+
+  \        location:
+
+  \          type: string
+
+  \          example: '1020123.123123'
+
+  \        rating:
+
+  \          type: integer
+
+  \          example: 4.2
+
+  \        active:
+
+  \          type: boolean
+
+  \          example: true
+
+  \        quantityRequest:
+
+  \          type: integer
+
+  \          example: 23
+
+  \        createdat:
+
+  \          type: string
+
+  \          example: 12/10/2121
+
+  \        clientpassword:
+
+  \          type: string
+
+  \          example: '21dfn893nfcjodaufuiodauif'
+
+  \        skills:
+
+  \          type: array
+
+  \          items:
+
+  \            $ref: '#/components/schemas/Skill'
+
+
+
+  \    Skill:
+
+  \      type: object
+
+  \      properties:
+
+  \        skillurl:
+
+  \          type: string
+
+  \          example: '/skill/212'
+
+  \        userurl:
+
+  \          type: string
+
+  \          example: '/user/212'
+
+  \        price:
+
+  \          type: integer
+
+  \          example: 55
+
+  \        rating:
+
+  \          type: integer
+
+  \          example: 3
+
+  \        minimunDowPayment:
+
+  \          type: integer
+
+  \          example: 20
+
+  \        available:
+
+  \          type: boolean
+
+  \          example: true
+
+  \         \ 
+
+  \         \ 
+
+  \    SkillTypes:
+
+  \      type: object
+
+  \      properties:
+
+  \        id:
+
+  \          type: integer
+
+  \          example: 12
+
+  \        idurl:
+
+  \          type: string
+
+  \          example: '/skill/212'
+
+  \        skillName:
+
+  \          type: string
+
+  \          example: 'Web Design'
+
+  \        quantityusers:
+
+  \          type: integer
+
+  \          example: 24
+
+  \         \ 
+
+  \    Client:
+
+  \      type: object
+
+  \      properties:
+
+  \        id:
+
+  \          type: integer
+
+  \          example: 12
+
+  \        clientname:
+
+  \          type: string
+
+  \          example: 'Franz'
+
+  \        clientlastname:
+
+  \          type: string
+
+  \          example: 'Walter Loza'    \ 
+
+  \        clientemail:
+
+  \          type: string
+
+  \          example: client@gmail.com
+
+  \        clientpassword:
+
+  \          type: string
+
+  \          example: '231#@$DSAdfgasd'
+
+  \        lastname:
+
+  \          type: string
+
+  \          example: 'Loza Silva'
+
+  \        rating:
+
+  \          type: integer
+
+  \          example: 4.3
+
+  \        quantityusers:
+
+  \          type: integer
+
+  \          example: 24
+
+  \        createdat:
+
+  \          type: string
+
+  \          example: 05/05/2021
+
+  \         \ 
+
+  \    Request:
+
+  \      type: object
+
+  \      properties:
+
+  \        id:
+
+  \          type: integer
+
+  \          example: 12
+
+  \        userid:
+
+  \          type: string
+
+  \          example: '/user/21'
+
+  \        clientid:
+
+  \          type: string
+
+  \          example: '/client/123'
+
+  \        location:
+
+  \          type: string
+
+  \          example: '1231232.122313123'
+
+  \        status:
+
+  \          type: string
+
+  \          example: '/description/12'
+
+  \        arrangedate:
+
+  \          type: string
+
+  \          example: '12/12/2010'
+
+  \        downpayment:
+
+  \          type: integer
+
+  \          example: 123
+
+  \        total:
+
+  \          type: integer
+
+  \          example: 1234
+
+  \         \ 
+
+  \     \ 
+
+  \   \ 
+
+  \   \ 
+
+  \   \ 
+
+  \    "
+contentType: yaml
