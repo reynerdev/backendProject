@@ -1,5 +1,5 @@
-const User = require('./UserModel.js');
-const Skill = require('./SkillModel.js');
-const Client = require('./ClientModel.js');
-
-module.exports = { User, Skill, Client };
+const User = require('./UserModel');
+const Skill = require('./SkillModel');
+const Client = require('./ClientModel');
+const Request = require('./Request');
+module.exports = { User, Skill, Client, Request };
