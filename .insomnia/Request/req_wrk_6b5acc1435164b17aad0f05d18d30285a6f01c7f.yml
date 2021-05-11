@@ -9,7 +9,6 @@ description: ""
 method: POST
 body:
   mimeType: application/json
-  text: null
 parameters: []
 headers: []
 authentication: {}

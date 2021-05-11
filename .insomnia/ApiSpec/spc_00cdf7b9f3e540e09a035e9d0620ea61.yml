@@ -1,7 +1,7 @@
 _id: spc_00cdf7b9f3e540e09a035e9d0620ea61
 type: ApiSpec
 parentId: wrk_6b5acc1435164b17aad0f05d18d30285
-modified: 1620363955877
+modified: 1620712098771
 created: 1620006060625
 fileName: devfBackendProject
 contents: "openapi: 3.0.0
@@ -321,9 +321,9 @@ contents: "openapi: 3.0.0
 
   \        - User
 
-  \      summary: Deletes a pet
+  \      summary: Deletes a User
 
-  \      description: Deletes a pet
+  \      description: Deletes a User
 
   \      parameters:
 
@@ -448,7 +448,37 @@ contents: "openapi: 3.0.0
   \          description: User not found
 
 
-  \               \ 
+  \    put:
+
+  \      tags:
+
+  \        - User
+
+  \      summary: Update an skill to the User\ 
+
+  \      description: Update an skill to the User\ 
+
+  \      requestBody:
+
+  \        required: true
+
+  \        content:
+
+  \          application/json:
+
+  \            schema:
+
+  \              $ref:  '#/components/schemas/Skill'
+
+  \      responses:
+
+  \        '400':
+
+  \          description: Invalid ID supplied
+
+  \        '404':
+
+  \          description: User not found               \ 
 
   \               \ 
 
@@ -610,6 +640,42 @@ contents: "openapi: 3.0.0
 
   \          description: User not found    \ 
 
+  \         \ 
+
+  \         \ 
+
+  \    put:
+
+  \      tags:
+
+  \        - Skill
+
+  \      summary:  Update an existing Skill
+
+  \      description: Add a Skill type\ 
+
+  \      requestBody:\ 
+
+  \        required: true
+
+  \        content:
+
+  \          application/json:
+
+  \            schema:
+
+  \              $ref:  '#/components/schemas/SkillTypes'
+
+  \      responses:
+
+  \        '400':
+
+  \          description: Invalid ID supplied
+
+  \        '404':
+
+  \          description: User not found        \ 
+
   \                \ 
 
   \    \ 
@@ -689,6 +755,82 @@ contents: "openapi: 3.0.0
 
   \          description: Logs out current logged in user session
 
+  \         \ 
+
+  \         \ 
+
+  \  /request:
+
+  \    get:
+
+  \      tags:
+
+  \        - Request
+
+  \      description: Get all the requests
+
+  \      summary: Get all the requests
+
+  \     \ 
+
+  \      responses:
+
+  \        '200':
+
+  \          description: Return an array of all the requests
+
+  \          content:
+
+  \            application/json:
+
+  \              schema:
+
+  \                type: array
+
+  \                items:
+
+  \                  $ref: '#/components/schemas/Request'
+
+  \                 \ 
+
+  \    put:
+
+  \      tags:
+
+  \        - Request
+
+  \      summary:  Update an existing request
+
+  \      description: Update an existing request
+
+  \      requestBody:\ 
+
+  \        required: true
+
+  \        content:
+
+  \          application/json:
+
+  \            schema:
+
+  \              $ref:  '#/components/schemas/Request'
+
+  \      responses:
+
+  \        '400':
+
+  \          description: Invalid ID supplied
+
+  \        '404':
+
+  \          description: User not found       \ 
+
+  \                 \ 
+
+  \                 \ 
+
+  \             \ 
+
   \\ 
 
   \  /request/{requestid}:
@@ -705,11 +847,9 @@ contents: "openapi: 3.0.0
 
   \      parameters:
 
-  \        - name: User Id
+  \        - name: requestid
 
-  \        - in: path
-
-  \          name: requestid
+  \          in: path
 
   \          required: true
 
@@ -718,6 +858,8 @@ contents: "openapi: 3.0.0
   \            type: integer
 
   \            example: 3
+
+  \          description: Request Id from the client
 
   \      responses:
 
@@ -732,6 +874,9 @@ contents: "openapi: 3.0.0
   \              schema:
 
   \                $ref: '#/components/schemas/Request'
+
+  \               \ 
+
 
 
   \    delete:
@@ -780,15 +925,226 @@ contents: "openapi: 3.0.0
 
   \          description: Pet not found
 
-  \      security:
 
-  \        - petstore_auth:
 
-  \            - 'write:pets'
+  \  /request/{requestid}/finish:
 
-  \            - 'read:pets'
+  \    post:
 
-  \           \ 
+  \      tags:\ 
+
+  \        - Request
+
+  \      summary: Set status request to complete
+
+  \      description:  Set status request to complete
+
+  \      parameters:
+
+  \        - name: requestid
+
+  \          in: path
+
+  \          required: true
+
+  \          schema:
+
+  \            type: integer
+
+  \            example: 3
+
+  \          description: Request Id from the client
+
+  \      responses:
+
+  \        '200':
+
+  \          description: Succesfull finished request\ 
+
+
+
+  \  /request/{userid}/{clientid}:
+
+  \    get:
+
+  \      tags:
+
+  \        - Request
+
+  \      summary: Return all the request between a Client Id and a User Id
+
+  \      parameters:
+
+  \        - name: userid
+
+  \          in: path
+
+  \          required: true
+
+  \          schema:
+
+  \            type: integer
+
+  \            example: 2
+
+  \          description: User id
+
+  \        - name: clientid
+
+  \          in: path
+
+  \          required: true
+
+  \          schema:
+
+  \            type: integer
+
+  \            example: 3
+
+  \          description: Client id
+
+  \        - name:  status
+
+  \          in: query
+
+  \          schema:
+
+  \            type: string
+
+  \          description: Filter the result by status
+
+  \      responses:
+
+  \        '200':
+
+  \          description: Sucessfull pull from the Request
+
+  \          content:\ 
+
+  \            application/json:
+
+  \              schema:
+
+  \                type: array
+
+  \                items:
+
+  \                   $ref: '#/components/schemas/Request'
+
+  \                  \ 
+
+  \                  \ 
+
+  \  /request/{userid}:
+
+  \    get:
+
+  \      tags:
+
+  \        - Request
+
+  \      summary: Return all the request from the Users's
+
+  \      parameters:
+
+  \        - name: userid
+
+  \          in: path
+
+  \          required: true
+
+  \          schema:
+
+  \            type: integer
+
+  \            example: 2
+
+  \          description: User id
+
+  \        - name:  status
+
+  \          in: query
+
+  \          schema:
+
+  \            type: string
+
+  \            example: completed
+
+  \          description: Filter the result by status
+
+  \      responses:
+
+  \        '200':
+
+  \          description: Sucessfull pull from the Request
+
+  \          content:\ 
+
+  \            application/json:
+
+  \              schema:
+
+  \                type: array
+
+  \                items:
+
+  \                   $ref: '#/components/schemas/Request'
+
+
+  \  /request/{clientid}:
+
+  \    get:
+
+  \      tags:
+
+  \        - Request
+
+  \      summary: Return all the request from the Clients
+
+  \      parameters:
+
+  \        - name: clientid
+
+  \          in: path
+
+  \          required: true
+
+  \          schema:
+
+  \            type: integer
+
+  \            example: 2
+
+  \          description: Client ID
+
+  \        - name:  status
+
+  \          in: query
+
+  \          schema:
+
+  \            type: string
+
+  \          description: Filter the result by status
+
+  \      responses:
+
+  \        '200':
+
+  \          description: Sucessfull pull from the Request
+
+  \          content:\ 
+
+  \            application/json:
+
+  \              schema:
+
+  \                type: array
+
+  \                items:
+
+  \                   $ref: '#/components/schemas/Request'
 
   \  /client :
 
@@ -1102,7 +1458,13 @@ contents: "openapi: 3.0.0
 
   \          type: string
 
-  \          example: 'Franz Walter'
+  \          example: 'Franz'
+
+  \        clientlastname:
+
+  \          type: string
+
+  \          example: 'Walter Loza'    \ 
 
   \        clientemail:
 
