@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/reynerdev/backendProject#readme",
   "dependencies": {
+    "celebrate": "^14.0.0",
     "express": "^4.17.1",
     "knex": "^0.95.4",
     "pg": "^8.6.0"
