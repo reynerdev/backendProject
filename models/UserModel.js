@@ -6,9 +6,9 @@ const createKnexModel = require('../utils/createKnexModel');
 //   //   knex('User').insert(bodyRental);
 // };
 
-const TABLE = 'users';
-const TABLE_COLUMNS = ['user_id'];
-const TABLE_ID = 'user_id';
+const TABLE = 'User';
+const TABLE_COLUMNS = ['UserId'];
+const TABLE_ID = 'UserId';
 
 const User = createKnexModel(knex, TABLE, TABLE_COLUMNS, TABLE_ID);
 
