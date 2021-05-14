@@ -1,7 +1,5 @@
 function createKnexModel(knex, tableName, tableColumns, tableId) {
   const create = (body) => {
-    //body User, body Rental
-
     return knex(tableName).insert(body);
   };
 
