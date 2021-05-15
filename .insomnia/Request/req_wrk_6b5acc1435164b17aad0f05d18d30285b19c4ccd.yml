@@ -1,0 +1,21 @@
+_id: req_wrk_6b5acc1435164b17aad0f05d18d30285b19c4ccd
+type: Request
+parentId: fld_wrk_6b5acc1435164b17aad0f05d18d302854aed03ca
+modified: 1621096387834
+created: 1621096387834
+url: "{{ base_url }}/request/{{ requestid }}"
+name: Return a request by its ID
+description: ""
+method: GET
+body: {}
+parameters: []
+headers: []
+authentication: {}
+metaSortKey: -1621096387834
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

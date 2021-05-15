@@ -1,0 +1,27 @@
+_id: req_wrk_6b5acc1435164b17aad0f05d18d30285f7dab2411
+type: Request
+parentId: fld_wrk_6b5acc1435164b17aad0f05d18d3028528e22fe3
+modified: 1621096387696
+created: 1621096387696
+url: "{{ base_url }}/client"
+name: Return a List of Clients
+description: ""
+method: GET
+body: {}
+parameters:
+  - name: bodyLimit
+    disabled: true
+    value: "15"
+  - name: pageLimit
+    disabled: true
+    value: "2"
+headers: []
+authentication: {}
+metaSortKey: -1621096387696
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

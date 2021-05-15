@@ -1,0 +1,31 @@
+_id: req_wrk_6b5acc1435164b17aad0f05d18d3028584cde7ab
+type: Request
+parentId: fld_wrk_6b5acc1435164b17aad0f05d18d30285ec9f630c
+modified: 1621096387947
+created: 1621096387947
+url: "{{ base_url }}/skill"
+name: Update an existing Skill
+description: ""
+method: PUT
+body:
+  mimeType: application/json
+  text: |-
+    {
+      "id": 12,
+      "idurl": "/skill/212",
+      "skillName": "Web Design",
+      "quantityusers": 24
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+authentication: {}
+metaSortKey: -1621096387947
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

@@ -1,12 +1,12 @@
-_id: req_wrk_6b5acc1435164b17aad0f05d18d30285a6f01c7f
+_id: req_wrk_6b5acc1435164b17aad0f05d18d302854951eb80
 type: Request
-parentId: wrk_6b5acc1435164b17aad0f05d18d30285
-modified: 1620100018880
-created: 1620100018880
+parentId: fld_wrk_6b5acc1435164b17aad0f05d18d302859f8a2389
+modified: 1621096388118
+created: 1621096388118
 url: "{{ base_url }}/user"
-name: /user
+name: Update existing User
 description: ""
-method: POST
+method: PUT
 body:
   mimeType: application/json
   text: |-
@@ -38,7 +38,7 @@ headers:
   - name: Content-Type
     value: application/json
 authentication: {}
-metaSortKey: -1620100018880
+metaSortKey: -1621096388118
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true
