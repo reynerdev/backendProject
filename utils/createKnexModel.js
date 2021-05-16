@@ -8,7 +8,7 @@ function createKnexModel(knex, tableName, tableColumns, tableId) {
   };
 
   const findOneById = (id) => {
-    return knex
+    return knexz
       .select(tableColumns)
       .from(tableName)
       .where({ [tableId]: id, Active: true });

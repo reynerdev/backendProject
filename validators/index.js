@@ -1,3 +1,3 @@
 const UserValidator = require('./UserValidator');
-
-module.exports = { UserValidator };
+const ClientValidator = require('./ClientValidator')
+module.exports = { UserValidator , ClientValidator};
