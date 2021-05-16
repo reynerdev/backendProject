@@ -1,0 +1,24 @@
+_id: req_wrk_6b5acc1435164b17aad0f05d18d30285767bda63
+type: Request
+parentId: fld_wrk_6b5acc1435164b17aad0f05d18d302854aed03ca
+modified: 1621096387771
+created: 1621096387771
+url: "{{ base_url }}/request/{{ clientid }}"
+name: Return all the request from the Clients
+description: ""
+method: GET
+body: {}
+parameters:
+  - name: status
+    disabled: true
+    value: string
+headers: []
+authentication: {}
+metaSortKey: -1621096387771
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

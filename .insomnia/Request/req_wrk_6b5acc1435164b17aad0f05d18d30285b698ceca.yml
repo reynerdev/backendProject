@@ -1,0 +1,21 @@
+_id: req_wrk_6b5acc1435164b17aad0f05d18d30285b698ceca
+type: Request
+parentId: fld_wrk_6b5acc1435164b17aad0f05d18d302859f8a2389
+modified: 1621096387994
+created: 1621096387994
+url: "{{ base_url }}/user/{{ userid }}/skill"
+name: Return the information about all User's Skills
+description: ""
+method: GET
+body: {}
+parameters: []
+headers: []
+authentication: {}
+metaSortKey: -1621096387994
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

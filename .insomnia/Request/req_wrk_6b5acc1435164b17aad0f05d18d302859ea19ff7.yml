@@ -1,0 +1,31 @@
+_id: req_wrk_6b5acc1435164b17aad0f05d18d302859ea19ff7
+type: Request
+parentId: fld_wrk_6b5acc1435164b17aad0f05d18d30285ec9f630c
+modified: 1621096387961
+created: 1621096387961
+url: "{{ base_url }}/skill"
+name: Add a Skill type
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+      "id": 12,
+      "idurl": "/skill/212",
+      "skillName": "Web Design",
+      "quantityusers": 24
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+authentication: {}
+metaSortKey: -1621096387961
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

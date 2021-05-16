@@ -1,0 +1,24 @@
+_id: req_wrk_6b5acc1435164b17aad0f05d18d30285a69d0c03
+type: Request
+parentId: fld_wrk_6b5acc1435164b17aad0f05d18d302854aed03ca
+modified: 1621096387808
+created: 1621096387808
+url: "{{ base_url }}/request/{{ userid }}/{{ clientid }}"
+name: Return all the request between a Client Id and a User Id
+description: ""
+method: GET
+body: {}
+parameters:
+  - name: status
+    disabled: true
+    value: string
+headers: []
+authentication: {}
+metaSortKey: -1621096387808
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

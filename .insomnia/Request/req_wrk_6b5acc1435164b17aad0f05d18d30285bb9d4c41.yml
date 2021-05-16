@@ -1,0 +1,21 @@
+_id: req_wrk_6b5acc1435164b17aad0f05d18d30285bb9d4c41
+type: Request
+parentId: fld_wrk_6b5acc1435164b17aad0f05d18d302854aed03ca
+modified: 1621096387816
+created: 1621096387816
+url: "{{ base_url }}/request/{{ requestid }}/finish"
+name: Set status request to complete
+description: ""
+method: POST
+body: {}
+parameters: []
+headers: []
+authentication: {}
+metaSortKey: -1621096387816
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

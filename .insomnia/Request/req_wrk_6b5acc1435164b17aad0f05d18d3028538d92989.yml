@@ -1,0 +1,36 @@
+_id: req_wrk_6b5acc1435164b17aad0f05d18d3028538d92989
+type: Request
+parentId: fld_wrk_6b5acc1435164b17aad0f05d18d3028528e22fe3
+modified: 1621096387665
+created: 1621096387665
+url: "{{ base_url }}/client"
+name: Update existing User
+description: ""
+method: PUT
+body:
+  mimeType: application/json
+  text: |-
+    {
+      "id": 12,
+      "clientname": "Franz",
+      "clientlastname": "Walter Loza",
+      "clientemail": "client@gmail.com",
+      "clientpassword": "231#@$DSAdfgasd",
+      "lastname": "Loza Silva",
+      "rating": 4.3,
+      "quantityusers": 24,
+      "createdat": "05/05/2021"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+authentication: {}
+metaSortKey: -1621096387665
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

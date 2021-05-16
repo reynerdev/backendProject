@@ -1,0 +1,21 @@
+_id: req_wrk_6b5acc1435164b17aad0f05d18d3028526a5efe6
+type: Request
+parentId: fld_wrk_6b5acc1435164b17aad0f05d18d302859f8a2389
+modified: 1621096387971
+created: 1621096387971
+url: "{{ base_url }}/user/{{ userid }}/skill/{{ skillid }}"
+name: Deletes a specific skill from the User
+description: ""
+method: DELETE
+body: {}
+parameters: []
+headers: []
+authentication: {}
+metaSortKey: -1621096387971
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

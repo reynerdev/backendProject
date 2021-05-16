@@ -1,7 +1,7 @@
 _id: spc_00cdf7b9f3e540e09a035e9d0620ea61
 type: ApiSpec
 parentId: wrk_6b5acc1435164b17aad0f05d18d30285
-modified: 1620712098771
+modified: 1621096599470
 created: 1620006060625
 fileName: devfBackendProject
 contents: "openapi: 3.0.0
@@ -10,7 +10,7 @@ contents: "openapi: 3.0.0
 
   \  - description: SwaggerHub API Auto Mocking
 
-  \    url: https://virtserver.swaggerhub.com/reynerdev/DraegerService/1.0.0
+  \    url: https://localhost:3000
 
   info:
 
@@ -693,9 +693,9 @@ contents: "openapi: 3.0.0
 
   \         - Clients
 
-  \       summary: Log in User
+  \       summary: Log in Client
 
-  \       description: Log in User
+  \       description: Log in Client
 
   \       requestBody:
 
@@ -745,9 +745,9 @@ contents: "openapi: 3.0.0
 
   \        - Clients
 
-  \      summary: Logs out current User
+  \      summary: Logs out current Client
 
-  \      description: Logs out current User
+  \      description: Logs out current Client
 
   \      responses:
 
@@ -831,7 +831,6 @@ contents: "openapi: 3.0.0
 
   \             \ 
 
-  \\ 
 
   \  /request/{requestid}:
 
@@ -865,7 +864,7 @@ contents: "openapi: 3.0.0
 
   \        '200':
 
-  \          description: Succesfull pull from the User\ 
+  \          description: Succesfull pull from the Client
 
   \          content:\ 
 

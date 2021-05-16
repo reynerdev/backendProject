@@ -1,0 +1,33 @@
+_id: req_wrk_6b5acc1435164b17aad0f05d18d3028567b51f14
+type: Request
+parentId: fld_wrk_6b5acc1435164b17aad0f05d18d302859f8a2389
+modified: 1621096387978
+created: 1621096387978
+url: "{{ base_url }}/user/{{ userid }}/skill"
+name: Update an skill to the User
+description: ""
+method: PUT
+body:
+  mimeType: application/json
+  text: |-
+    {
+      "skillurl": "/skill/212",
+      "userurl": "/user/212",
+      "price": 55,
+      "rating": 3,
+      "minimunDowPayment": 20,
+      "available": true
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+authentication: {}
+metaSortKey: -1621096387978
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

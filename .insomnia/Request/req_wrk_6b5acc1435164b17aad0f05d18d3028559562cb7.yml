@@ -1,0 +1,35 @@
+_id: req_wrk_6b5acc1435164b17aad0f05d18d3028559562cb7
+type: Request
+parentId: fld_wrk_6b5acc1435164b17aad0f05d18d302854aed03ca
+modified: 1621096387842
+created: 1621096387842
+url: "{{ base_url }}/request"
+name: Update an existing request
+description: ""
+method: PUT
+body:
+  mimeType: application/json
+  text: |-
+    {
+      "id": 12,
+      "userid": "/user/21",
+      "clientid": "/client/123",
+      "location": "1231232.122313123",
+      "status": "/description/12",
+      "arrangedate": "12/12/2010",
+      "downpayment": 123,
+      "total": 1234
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+authentication: {}
+metaSortKey: -1621096387842
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global
