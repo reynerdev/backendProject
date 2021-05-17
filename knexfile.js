@@ -3,6 +3,7 @@
 module.exports = {
   // Contiene datos de prueba para hacer todo tipo de experimentos
   development: {
+    debug: true,
     client: 'postgresql',
     connection: {
       host: 'queenie.db.elephantsql.com',

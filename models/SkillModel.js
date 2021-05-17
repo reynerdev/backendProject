@@ -1,10 +1,9 @@
-// const knex = require('../config');
+const knex = require('../config');
+const createSkillModel = require('../utils/createKnexModel');
 
-const create = (bodySkill) => {
-  //esto de aca nos devuelve una promesa. Pero se decide manejarlo a nivel de controlador
-  //   knex('User').insert(bodyRental);
-};
+const Table = 'Skill';
+const Tableid = 'SkillId';
+const TableColumns = ['SkillId', 'SkillName', 'Category'];
+const Skill = createSkillModel(knex, Table, TableColumns, Tableid);
 
-module.exports = {
-  create,
-};
+module.exports = Skill;

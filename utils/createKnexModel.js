@@ -3,12 +3,23 @@ function createKnexModel(knex, tableName, tableColumns, tableId) {
     return knex(tableName).insert(body);
   };
 
+  const find = (query, columns) => {
+    return knex
+      .select(columns)
+      .from(tableName)
+      .where({ ...query, Active: true });
+  };
+
   const findAll = () => {
     return knex.select(tableColumns).from(tableName).where({ Active: true });
   };
 
+  const findAllNoActiveOption = () => {
+    return knex.select(tableColumns).from(tableName);
+  };
+
   const findOneById = (id) => {
-    return knexz
+    return knex
       .select(tableColumns)
       .from(tableName)
       .where({ [tableId]: id, Active: true });
@@ -29,11 +40,13 @@ function createKnexModel(knex, tableName, tableColumns, tableId) {
   };
 
   return {
+    find,
     create,
     findAll,
     findOneById,
     updateOneById,
     deleteOneById,
+    findAllNoActiveOption,
   };
 }
 
