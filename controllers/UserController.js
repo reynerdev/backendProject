@@ -1,19 +1,14 @@
 const { restart } = require('nodemon');
-const { User, Client } = require('../models');
-
-const createUser = (req, res) => {
-  // const newUser = req.body
-
-  // creamos el objeto newUser para insertarlo en la base de datos
-
-  const newUser = {};
-
-  // return res.status(200).json({
-  //   message: 'User created',
-  // });
-  // utilizando knex, insertar el objeto en la base datos
-  // return;
-  // responder lo que nos devuelve la base de datos
+const { User } = require('../models');
+const { updateOneByIdSetToComplete } = require('../models/RequestModel');
+const hashPassword = require('../utils/hashPassword');
+const comparePassword = require('../utils/comparePassword');
+const generateToken = require('../utils/generateToken');
+const createUser = async (req, res) => {
+  if (req.body.password) {
+    const hash = await hashPassword(req.body.password);
+    req.body.password = hash;
+  }
 
   return User.create(req.body)
     .then((resDB) => {
@@ -98,20 +93,29 @@ const deleteOneById = async (req, res) => {
 };
 
 const login = async (req, res) => {
-  const { email, password } = req.body;
+  const { UserEmail, password } = req.body;
   try {
     // Its the user registreds?
 
-    const [user] = await User.find({ email: email }, [
+    const [user] = await User.find({ UserEmail: UserEmail }, [
       'UserId',
       'Name',
       'LastName',
-      'UserPassword',
+      'UserEmail',
     ]);
 
     if (!user) return res.status(400).json({ message: 'Invalid Credentials' });
 
-    //3) Generar un JWT
+    // Check if the password is right
+
+    const isMatch = await comparePassword(password, user.password);
+    if (!isMatch)
+      return res.status(400).json({ message: 'Invalid credentials' });
+
+    // Generar un JWT
+
+    const token = await generateToken(user);
+    return res.status(200).json({ token });
   } catch (error) {
     res.status(500).send({ message: 'Server Error', error });
   }
@@ -147,6 +151,7 @@ const updateOneUserSkill = async (req, res) => {
   const body = req.body;
   try {
     await User.updateOneUserSkill(idUser, idSkill, body);
+    res.status(200).json({ message: 'Succesfully Skill updated' });
   } catch (error) {
     res.status(500).send({ error });
   }
@@ -157,7 +162,7 @@ const findOneUserSkill = async (req, res) => {
     const resDb = await User.findOneUserSkill(idUser, idSkill);
     res
       .status(200)
-      .json({ message: 'Succefully retrieve a Skill from one User' });
+      .json({ message: 'Succesfully retrieve a Skill from one User', resDb });
   } catch (error) {
     res.status(500).send({ error });
   }

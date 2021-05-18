@@ -9,12 +9,17 @@ function createKnexModel(knex, tableName, tableColumns, tableId) {
       .from(tableName)
       .where({ ...query, Active: true });
   };
-
+  const findNoActiveOption = (query) => {
+    return knex
+      .select('*')
+      .from(tableName)
+      .where({ ...query });
+  };
   const findAll = () => {
     return knex.select(tableColumns).from(tableName).where({ Active: true });
   };
 
-  const findAllNoActiveOption = () => {
+  const findAllNoActiveOption = (id) => {
     return knex.select(tableColumns).from(tableName);
   };
 
@@ -47,6 +52,7 @@ function createKnexModel(knex, tableName, tableColumns, tableId) {
     updateOneById,
     deleteOneById,
     findAllNoActiveOption,
+    findNoActiveOption,
   };
 }
 

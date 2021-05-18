@@ -53,6 +53,7 @@ User.addOneUserSkill = (idUser, body) => {
 };
 
 User.updateOneUserSkill = (idUser, idSkill, body) => {
+  console.log(idUser, idSkill, body);
   return knex
     .update(body)
     .from('UserSkill')
