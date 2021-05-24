@@ -1,27 +1,25 @@
-_id: req_wrk_6b5acc1435164b17aad0f05d18d30285c5e2ffe1
+_id: req_wrk_6b5acc1435164b17aad0f05d18d30285daa7816a
 type: Request
-parentId: fld_wrk_6b5acc1435164b17aad0f05d18d302859f8a2389
-modified: 1621297539200
-created: 1621096387982
-url: "{{ _.host }}/user/1/skill"
-name: Add an skill to the User
+parentId: fld_wrk_6b5acc1435164b17aad0f05d18d30285bae7d5be
+modified: 1621288861197
+created: 1621287737621
+url: "{{ base_url }}/status"
+name: Create an Status for the Request
 description: ""
 method: POST
 body:
   mimeType: application/json
   text: |-
     {
-      "Skill_id": 2,
-      "Price/hr": 55.02,
-      "MinimunDownPayment": 20.01
+      "Description": "Test"
     }
 parameters: []
 headers:
   - name: Content-Type
     value: application/json
-    id: pair_bb9f7e73ba384313a08e4a2b1ef6ab4c
+    id: pair_a56a7b941b1548619f09d417cd88200c
 authentication: {}
-metaSortKey: -1621096387982
+metaSortKey: -1621287737621
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

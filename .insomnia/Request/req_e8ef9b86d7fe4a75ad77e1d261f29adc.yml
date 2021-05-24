@@ -1,9 +1,9 @@
 _id: req_e8ef9b86d7fe4a75ad77e1d261f29adc
 type: Request
 parentId: wrk_6b5acc1435164b17aad0f05d18d30285
-modified: 1620006690684
+modified: 1620883645564
 created: 1620006102752
-url: localhost:3000/api/v1/rental
+url: localhost:3000/api/v1/user
 name: GET
 description: ""
 method: POST
@@ -11,7 +11,12 @@ body:
   mimeType: application/json
   text: |-
     {
-    	"Hola": "Reyner"
+    	"Name": "Reyner",
+    	"LastName": "Loza Silva",
+    	"UserEmail": "hrelozaa@gmail.com",
+    	"Birthday": "12/10/22",
+    	"UserPassword": "12dasdasd"
+    	
     	
     }
 parameters: []

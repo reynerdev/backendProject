@@ -1,16 +1,28 @@
 _id: spc_00cdf7b9f3e540e09a035e9d0620ea61
 type: ApiSpec
 parentId: wrk_6b5acc1435164b17aad0f05d18d30285
-modified: 1621096599470
+modified: 1621297444990
 created: 1620006060625
 fileName: devfBackendProject
 contents: "openapi: 3.0.0
 
   servers:
 
-  \  - description: SwaggerHub API Auto Mocking
+  \  - url: https://{environment}/ap1/v1
 
-  \    url: https://localhost:3000
+  \    variables:
+
+  \      environment:
+
+  \        default: api    # Production server
+
+  \        enum:
+
+  \          - api         # Production server
+
+  \          - localhost:3000     # Development server
+
+  \          - api.staging # Staging server
 
   info:
 
@@ -59,6 +71,10 @@ contents: "openapi: 3.0.0
 
   \   \ 
 
+  \  - name: Status
+
+  \    description: Status of the request
+
   \   \ 
 
   \   \ 
@@ -74,8 +90,6 @@ contents: "openapi: 3.0.0
   \          - User
 
   \        summary: Return a List of Users
-
-  \        operationId: searchFSE
 
   \        description:  Obtain information about all users from the
   application database
@@ -320,6 +334,8 @@ contents: "openapi: 3.0.0
   \      tags:
 
   \        - User
+
+  \       \ 
 
   \      summary: Deletes a User
 
@@ -1235,7 +1251,7 @@ contents: "openapi: 3.0.0
 
   \            schema:
 
-  \              $ref:  '#/components/schemas/Client'
+  \              $ref:  '#/components/schemas/ClientCreate'
 
   \             \ 
 
@@ -1277,6 +1293,85 @@ contents: "openapi: 3.0.0
 
   \          description: Successfully created User\ 
 
+  \         \ 
+
+  \  /status:
+
+  \    post:
+
+  \      tags:
+
+  \        - Status
+
+  \      summary: Create an Status for the Request
+
+  \      description: Create an Status for the Request
+
+  \      requestBody:
+
+  \        required: true
+
+  \        content:
+
+  \          application/json:
+
+  \            schema:
+
+  \              $ref: '#/components/schemas/StatusPost'
+
+  \      responses:
+
+  \        '200':
+
+  \          description: Status ID Created
+
+  \         \ 
+
+  \  /status/{statusid}:
+
+  \    get:
+
+  \      tags:
+
+  \        - Status
+
+  \      summary: Get one Status by its ID
+
+  \      description: Get one Status by its ID
+
+  \      parameters:
+
+  \        - name: Statusid
+
+  \          in: path
+
+  \          required: true
+
+  \          schema:
+
+  \            type: integer
+
+  \            example: 2
+
+  \      responses:
+
+  \        '200':
+
+  \          description: Succesfull
+
+  \          content:
+
+  \            application/json:
+
+  \              schema:
+
+  \                $ref: '#/components/schemas/StatusGet'
+
+  \               \ 
+
+
+  \     \ 
+
   components:
 
   \  schemas:
@@ -1293,67 +1388,67 @@ contents: "openapi: 3.0.0
 
   \          example: 4
 
-  \        idurl:
+  \        IdUrl:
 
   \          type: string
 
   \          example: /user/4
 
-  \        username:
+  \        Name:
 
   \          type: string
 
   \          example: Reyner Loza
 
-  \        lastname:
+  \        LastName:
 
   \          type: string
 
   \          example: Loza Silva
 
-  \        birthday:
+  \        Birthday:
 
   \          type: string
 
   \          example: 10/02/1995
 
-  \        location:
+  \        Location:
 
   \          type: string
 
   \          example: '1020123.123123'
 
-  \        rating:
+  \        Rating:
 
   \          type: integer
 
   \          example: 4.2
 
-  \        active:
+  \        Active:
 
   \          type: boolean
 
   \          example: true
 
-  \        quantityRequest:
+  \        QuantityRequest:
 
   \          type: integer
 
   \          example: 23
 
-  \        createdat:
+  \        CreatedAt:
 
   \          type: string
 
   \          example: 12/10/2121
 
-  \        clientpassword:
+  \        ClientPassword:
 
   \          type: string
 
   \          example: '21dfn893nfcjodaufuiodauif'
 
-  \        skills:
+  \        Skills:
 
   \          type: array
 
@@ -1369,37 +1464,37 @@ contents: "openapi: 3.0.0
 
   \      properties:
 
-  \        skillurl:
+  \        SkillId:
 
   \          type: string
 
   \          example: '/skill/212'
 
-  \        userurl:
+  \        UserUrl:
 
   \          type: string
 
   \          example: '/user/212'
 
-  \        price:
+  \        Price:
 
   \          type: integer
 
   \          example: 55
 
-  \        rating:
+  \        Rating:
 
   \          type: integer
 
   \          example: 3
 
-  \        minimunDowPayment:
+  \        MinimunDowPayment:
 
   \          type: integer
 
   \          example: 20
 
-  \        available:
+  \        Available:
 
   \          type: boolean
 
@@ -1415,29 +1510,23 @@ contents: "openapi: 3.0.0
 
   \      properties:
 
-  \        id:
+  \        SkillID:
 
   \          type: integer
 
   \          example: 12
 
-  \        idurl:
-
-  \          type: string
-
-  \          example: '/skill/212'
-
-  \        skillName:
+  \        SkillName:
 
   \          type: string
 
   \          example: 'Web Design'
 
-  \        quantityusers:
+  \        Category:
 
-  \          type: integer
+  \          type: string
 
-  \          example: 24
+  \          example: 'Art'
 
   \         \ 
 
@@ -1453,53 +1542,81 @@ contents: "openapi: 3.0.0
 
   \          example: 12
 
-  \        clientname:
+  \        ClientName:
 
   \          type: string
 
   \          example: 'Franz'
 
-  \        clientlastname:
+  \        ClientLastName:
 
   \          type: string
 
   \          example: 'Walter Loza'    \ 
 
-  \        clientemail:
+  \        ClientEmail:
 
   \          type: string
 
   \          example: client@gmail.com
 
-  \        clientpassword:
+  \        ClientPassword:
 
   \          type: string
 
   \          example: '231#@$DSAdfgasd'
 
-  \        lastname:
-
-  \          type: string
-
-  \          example: 'Loza Silva'
-
-  \        rating:
+  \        Rating:
 
   \          type: integer
 
   \          example: 4.3
 
-  \        quantityusers:
+  \        Spent:
 
   \          type: integer
 
   \          example: 24
 
-  \        createdat:
+  \        CreatedAt:
 
   \          type: string
 
   \          example: 05/05/2021
+
+  \         \ 
+
+  \    ClientCreate:
+
+  \      type: object
+
+  \      properties:
+
+  \        ClientName:
+
+  \          type: string
+
+  \          example: 'Franz'
+
+  \        ClientLastName:
+
+  \          type: string
+
+  \          example: 'Walter Loza'    \ 
+
+  \        ClientEmail:
+
+  \          type: string
+
+  \          example: client@gmail.com
+
+  \        ClientPassword:
+
+  \          type: string
+
+  \          example: '231#@$DSAdfgasd'
+
+
 
   \         \ 
 
@@ -1515,49 +1632,81 @@ contents: "openapi: 3.0.0
 
   \          example: 12
 
-  \        userid:
+  \        UserId:
 
   \          type: string
 
   \          example: '/user/21'
 
-  \        clientid:
+  \        ClientId:
 
   \          type: string
 
   \          example: '/client/123'
 
-  \        location:
+  \        Location:
 
   \          type: string
 
   \          example: '1231232.122313123'
 
-  \        status:
+  \        Status:
 
   \          type: string
 
   \          example: '/description/12'
 
-  \        arrangedate:
+  \        Arrangedate:
 
   \          type: string
 
   \          example: '12/12/2010'
 
-  \        downpayment:
+  \        Downpayment:
 
   \          type: integer
 
   \          example: 123
 
-  \        total:
+  \        Total:
 
   \          type: integer
 
   \          example: 1234
 
-  \         \ 
+
+  \    StatusGet:
+
+  \      type: object
+
+  \      properties:
+
+  \        id:
+
+  \          type: integer
+
+  \          example: 12
+
+  \        Description:
+
+  \          type: string
+
+  \          example: 'Acepted'
+
+
+  \    \ 
+
+  \    StatusPost:
+
+  \      type: object
+
+  \      properties:
+
+  \        Description:
+
+  \          type: string
+
+  \          example: 'Acepted'
 
   \     \ 
 

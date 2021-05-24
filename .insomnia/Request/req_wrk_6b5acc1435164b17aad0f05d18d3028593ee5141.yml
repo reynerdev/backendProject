@@ -1,9 +1,9 @@
 _id: req_wrk_6b5acc1435164b17aad0f05d18d3028593ee5141
 type: Request
 parentId: fld_wrk_6b5acc1435164b17aad0f05d18d3028528e22fe3
-modified: 1621096589902
+modified: 1621139389817
 created: 1621096387682
-url: "{{ _.host }}/client"
+url: "{{ base_url }}/client"
 name: Creates a new User
 description: ""
 method: POST
@@ -11,20 +11,16 @@ body:
   mimeType: application/json
   text: |-
     {
-      "id": 12,
-      "clientname": "Franz",
-      "clientlastname": "Walter Loza",
-      "clientemail": "client@gmail.com",
-      "clientpassword": "231#@$DSAdfgasd",
-      "lastname": "Loza Silva",
-      "rating": 4.3,
-      "quantityusers": 24,
-      "createdat": "05/05/2021"
+      "ClientName": "Franz",
+      "ClientLastName": "Walter Loza",
+      "ClientEmail": "client@gmail.com",
+      "ClientPassword": "231#@$DSAdfgasd"
     }
 parameters: []
 headers:
   - name: Content-Type
     value: application/json
+    id: pair_fd11e00a652b490a82ee412f2e383fd8
 authentication: {}
 metaSortKey: -1621096387682
 isPrivate: false

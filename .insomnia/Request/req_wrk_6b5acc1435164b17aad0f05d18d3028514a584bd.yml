@@ -1,9 +1,9 @@
 _id: req_wrk_6b5acc1435164b17aad0f05d18d3028514a584bd
 type: Request
 parentId: fld_wrk_6b5acc1435164b17aad0f05d18d30285ec9f630c
-modified: 1621096387967
+modified: 1621297465074
 created: 1621096387967
-url: "{{ base_url }}/skill"
+url: "{{ _.host }}/skill"
 name: Return all the Skills in our system
 description: ""
 method: GET

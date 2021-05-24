@@ -1,17 +1,17 @@
-_id: req_wrk_6b5acc1435164b17aad0f05d18d30285b698ceca
+_id: req_wrk_6b5acc1435164b17aad0f05d18d30285755c787c
 type: Request
-parentId: fld_wrk_6b5acc1435164b17aad0f05d18d302859f8a2389
-modified: 1621297497664
-created: 1621096387994
-url: "{{ _.host }}/user/1/skill/1"
-name: Return the information about all User's Skills
+parentId: fld_wrk_6b5acc1435164b17aad0f05d18d30285bae7d5be
+modified: 1621290186386
+created: 1621287737617
+url: "{{ base_url }}/status/{{ statusid }}"
+name: Get one Status by its ID
 description: ""
 method: GET
 body: {}
 parameters: []
 headers: []
 authentication: {}
-metaSortKey: -1621096387994
+metaSortKey: -1621287737617
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true
